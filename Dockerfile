@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.2-cuda10.0-cudnn7-devel
+FROM pytorch/pytorch:1.7.0-cuda11.0-cudnn8-devel
 MAINTAINER Canwen Xu <canwenxu@outlook.com>
 
 RUN apt-get update && apt-get install -y git libsndfile-dev && apt-get clean
