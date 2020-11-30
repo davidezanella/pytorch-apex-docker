@@ -1,4 +1,4 @@
-FROM anibali/pytorch:1.5.0-cuda9.2
+FROM anibali/pytorch:1.5.0-cuda9.2-ubuntu18.04
 
 RUN apt-get update && apt-get install -y git libsndfile-dev && apt-get clean
 RUN git clone https://github.com/nvidia/apex /apex && \
