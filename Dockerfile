@@ -4,8 +4,6 @@ USER root
 
 RUN apt-get update && apt-get install -y git libsndfile-dev && apt-get clean
 
-USER 1001
-
 RUN git clone https://github.com/nvidia/apex /apex && \
   cd /apex && \
   pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" .
