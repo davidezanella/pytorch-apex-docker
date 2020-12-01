@@ -8,15 +8,18 @@ RUN apt-get update && apt-get install -y \
     git \
     bzip2 \
     libx11-6
-    
-# Install Miniconda and Python 3.8
+
+# Install Miniconda
 ENV CONDA_AUTO_UPDATE_CONDA=false
-ENV PATH=/home/user/miniconda/bin:$PATH
-RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.2-Linux-x86_64.sh \
- && chmod +x ~/miniconda.sh \
- && ~/miniconda.sh -b -p ~/miniconda \
- && rm ~/miniconda.sh \
- && conda install -y python==3.8.1 \
+RUN curl -so miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && mkdir /root/.conda \
+    && bash miniconda.sh -b \
+    && rm -f miniconda.sh 
+    
+ENV PATH=/root/miniconda3/bin:$PATH
+
+# Install Python 3.8
+RUN conda install -y python==3.8.1 \
  && conda clean -ya
 
 # CUDA 9.2-specific steps
